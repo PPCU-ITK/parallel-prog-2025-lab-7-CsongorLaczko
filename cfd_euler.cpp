@@ -138,7 +138,8 @@ int main(){
     const int nSteps = 2000;
 
 
-    #pragma omp target data map(to: solid[0:total_size], Nx, Ny, rho0, u0, v0, E0, dt, dx, dy) \
+    #pragma omp target data \
+        map(to: solid[0:total_size]) \
         map(tofrom: rho[0:total_size], rhou[0:total_size], rhov[0:total_size], E[0:total_size]) \
         map(alloc: rho_new[0:total_size], rhou_new[0:total_size], rhov_new[0:total_size], E_new[0:total_size])
     {
